@@ -1,0 +1,47 @@
+﻿Övning 2: ExamineQueue()
+
+1.       Simulera följande kö på papper: 
+a.       ICA öppnar och kön till kassan är tom 
+b.      Kalle ställer sig i kön 
+c.       Greta ställer sig i kön 
+d.      Kalle blir expedierad och lämnar kön 
+e.      Stina ställer sig i kön 
+f.      Greta blir expedierad och lämnar kön 
+g.       Olle ställer sig i kön 
+h.      …
+
+
+a. 
+b. +Kalle -> [Kalle]
+c. +Greta -> [Kalle, Greta]
+d. -	  -> [Greta]
+e. +Stina -> [Greta, Stina]
+f. -	  -> [Stina]
+g. +Olle  -> [Stina, Olle]
+h. ...
+
+Övning 3:  ExamineStack()
+
+
+1.  Simulera ännu en gång ICA-kön på papper. Denna gång med en stack. Varför är det 
+	inte så smart att använda en stack i det här fallet? 
+1.Svar: Det är inte så rättvist att de som ställer sig i kön sist, ska få hjälp först.
+a.       ICA öppnar och kön till kassan är tom 
+b.      Kalle ställer sig i kön 
+c.       Greta ställer sig i kön 
+d.      Kalle blir expedierad och lämnar kön 
+e.      Stina ställer sig i kön 
+f.      Greta blir expedierad och lämnar kön 
+g.       Olle ställer sig i kön 
+h.      …
+
+a. 
+b. +Kalle -> [Kalle]
+c. +Greta -> [Kalle, Greta]
+d. -	  -> [Kalle]
+e. +Stina -> [Kalle, Stina]
+f. -	  -> [Kalle]
+g. +Olle  -> [Kalle, Olle]
+h. ...
+
+

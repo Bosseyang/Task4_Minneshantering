@@ -1,6 +1,4 @@
-﻿using System;
-
-#region
+﻿#region
 //1. Q:     Hur fungerar stacken och heapen? Förklara gärna med exempel eller skiss på dess 
 //          grundläggande funktion 
 //   A:     Stacken är självunderhållen och lagrar information som staplade lådor,
@@ -21,6 +19,9 @@
 //          att när vi har y=x så pekar både y och x på samma objekt i minnet, uppdaterar vi
 //          y.MyValue = 4 så ändrar vi även på x.MyValue då det pekar på samma objekt.
 #endregion
+
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Text;
 
 namespace SkalProj_Datastrukturer_Minne
 {
@@ -105,18 +106,13 @@ namespace SkalProj_Datastrukturer_Minne
                     "to remove\n0 to exit to main menu");
             while (true)
             {
-                string input = " "; //Creates the character input to be used with the switch-case below.
-                try
-                {
-                    input = Console.ReadLine() ?? string.Empty; //Tries to set input to the first char in an input line
-                }
-                catch (IndexOutOfRangeException) //If the input line is empty, we ask the users for some input.
-                {
-                    Console.Clear();
-                    Console.WriteLine("Please enter: \n+<value> to add\n-<value> " +
-                                        "to remove\n0 to exit");
-                }
+
+                string input = Console.ReadLine() ?? string.Empty;
+
+                //Exits the loop if the user input is 0.
                 if (input == "0") break;
+
+                //Use first character in string
                 char inputCommand = input[0];
                 string value = input.Substring(1);
 
@@ -165,7 +161,63 @@ namespace SkalProj_Datastrukturer_Minne
              * Create a switch with cases to enqueue items or dequeue items
              * Make sure to look at the queue after Enqueueing and Dequeueing to see how it behaves
             */
+            Queue<string> queue = new Queue<string>();
+            Console.WriteLine("Please enter: \n+<name> to Enqueue\n- " +
+        "to dequeue\n0 to exit.");
+
+            while (true)
+            {
+                string input = Console.ReadLine() ?? string.Empty;
+                //Exits the loop if the user input is 0.
+                if (input == "0") break;
+
+                //Use first character in string
+                char inputCommand = input[0];
+                string name = input.Substring(1);
+
+                switch (inputCommand)
+                {
+                    case '+': //Enqueue
+                        queue.Enqueue(name);
+                        break;
+                    case '-': //Dequeue
+                        if (queue.Count == 0)
+                        {
+                            Console.WriteLine("Queue is empty, please enqueue with input:" +
+                                "+<Name>, or exit to main menu with 0");
+                            break;
+                        }
+
+                        queue.Dequeue();
+                        break;
+                    default:
+                        Console.WriteLine("Please input +<Name> to Enqueue or - to Dequeue");
+                        continue;
+
+                }
+                Console.WriteLine($"Queue: " + string.Join(", ", queue));
+            }
         }
+//1. Simulera följande kö på papper: 
+//a.    ICA öppnar och kön till kassan är tom
+//b.    Kalle ställer sig i kön
+//c.    Greta ställer sig i kön
+//d.    Kalle blir expedierad och lämnar kön
+//e.    Stina ställer sig i kön
+//f.    Greta blir expedierad och lämnar kön
+//g.    Olle ställer sig i kön
+//h.    ...
+
+
+//a.
+//b.    +Kalle  -> [Kalle]
+//c.    +Greta  -> [Kalle, Greta]
+//d.    -	    -> [Greta]
+//e.    +Stina  -> [Greta, Stina]
+//f.    -	    -> [Stina]
+//g.    +Olle   -> [Stina, Olle]
+//h.    ...
+
 
         /// <summary>
         /// Examines the datastructure Stack
@@ -177,7 +229,55 @@ namespace SkalProj_Datastrukturer_Minne
              * Create a switch with cases to push or pop items
              * Make sure to look at the stack after pushing and and poping to see how it behaves
             */
+
+            while (true)
+            {
+                Console.WriteLine("Press enter to continue, 0 to exit to main menu");
+                string input = Console.ReadLine() ?? string.Empty;
+                //Exits the loop if the user input is 0.
+                if (input == "0") break;
+                ReverseText();
+            }
+
         }
+        static void ReverseText()
+        {
+            Console.WriteLine("Please enter a string to reverse: ");
+            Stack<char> stack = new Stack<char>();
+            string input = Console.ReadLine() ?? string.Empty;
+            StringBuilder builder = new StringBuilder();
+            string reversedString;
+            
+            foreach (char c in input) 
+            {
+                stack.Push(c);
+            }
+
+            while(0<stack.Count)
+            {
+                //Building and saving the stack back to a string, but reversed using pop.
+                builder.Append(stack.Pop());
+                //Console.Write(stack.Pop());
+            }
+            reversedString = builder.ToString();
+            Console.WriteLine($"\nThe reversed string: {reversedString}");
+
+        }
+//1.        Simulera ännu en gång ICA-kön på papper.Denna gång med en stack.Varför är det
+//          inte så smart att använda en stack i det här fallet? 
+//1.Svar:   Det är inte så rättvist att de som ställer sig i kön sist, får hjälp först.
+//a.ICA öppnar och kön till kassan är tom
+
+//a.
+//b. +Kalle -> [Kalle]
+//c. +Greta -> [Kalle, Greta]
+//d. -	  -> [Kalle]
+//e. +Stina -> [Kalle, Stina]
+//f. -	  -> [Kalle]
+//g. +Olle  -> [Kalle, Olle]
+//h. ...
+
+
 
         static void CheckParanthesis()
         {
