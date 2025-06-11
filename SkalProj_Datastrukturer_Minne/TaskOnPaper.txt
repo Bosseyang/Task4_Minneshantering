@@ -1,4 +1,41 @@
-﻿Övning 2: ExamineQueue()
+﻿********** Frågor och svar! **********
+
+1.Q:     Hur fungerar stacken och heapen? Förklara gärna med exempel eller skiss på dess 
+          grundläggande funktion 
+   A:     Stacken är självunderhållen och lagrar information som staplade lådor,
+          vi måste "lyfta" de övre lådorna för att komma åt de undre.
+          Heapen, där ligger all information utspritt och vi har till gång till allt
+          bara vi vet vad vi vill ha, där hanteras information vi ej behöver av Garbage Collectorn
+
+2. Q:     Vad är Value Types respektive Reference Types och vad skiljer dem åt? 
+   A:     Value Types är inbyggda variabel typer i System.ValueType så som tex. bool, int,
+          float etc. Dessa lagras där de deklareras, deklareras de i en class lagras de på heapen tex.
+          Reference Types så som class, interface, object osv. lagras alltid på Heapen
+
+3. Q:     Följande metoder(se bild nedan) genererar olika svar. Den första returnerar 3, den 
+          andra returnerar 4, varför? 
+   A:     I första exemplet ReturnValue(): Vi använder oss av värdetypen int här, då uppdaterar
+          vi ej x där vi uppdaterar y till 4 då vi endast kopierar över värdet av x till y (y=x)
+          I det andra exemplet ReturnValue2(): Här använder vi en referenstyp MyInt, det betyder
+          att när vi har y=x så pekar både y och x på samma objekt i minnet, uppdaterar vi
+          y.MyValue = 4 så ändrar vi även på x.MyValue då det pekar på samma objekt.
+
+Övning 1: ExamineList()
+2.Q.    När ökar listans kapacitet? (Alltså den underliggande arrayens storlek) 
+  A.    Listans kapacitet ökar för varje gång den nuvarande kapaciteten överskrids
+               
+3.Q.    Med hur mycket ökar kapaciteten?
+  A.    Exponentiellt med faktor 2 (2^n) och börjar med 4 i kapacitet, alltså blir kapaciteten 4, 8, 16, 32 osv.
+4.Q.    Varför ökar inte listans kapacitet i samma takt som element läggs till? 
+  A.    Då omallokering kostar prestanda så allokeras de vanligtvist exponentiellt varje gång kapaciteten är nådd
+5.Q.    Minskar kapaciteten när element tas bort ur listan? 
+  A.    Nej, de minskar ej då de redan är allokerade
+6.Q.    När är det då fördelaktigt att använda en egendefinierad array istället för en lista?
+  A.    Arrays är fördelaktiga då man från början vet antal element man behöver jobba med
+        Då kan man "Förallokera" antalet platser i arrayen.
+
+
+Övning 2: ExamineQueue()
 
 1.       Simulera följande kö på papper: 
 a.       ICA öppnar och kön till kassan är tom 

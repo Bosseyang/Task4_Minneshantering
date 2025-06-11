@@ -1,5 +1,5 @@
 ﻿#region
-//1. Q:     Hur fungerar stacken och heapen? Förklara gärna med exempel eller skiss på dess 
+//1.Q:     Hur fungerar stacken och heapen? Förklara gärna med exempel eller skiss på dess 
 //          grundläggande funktion 
 //   A:     Stacken är självunderhållen och lagrar information som staplade lådor,
 //          vi måste "lyfta" de övre lådorna för att komma åt de undre.
@@ -11,16 +11,15 @@
 //          float etc. Dessa lagras där de deklareras, deklareras de i en class lagras de på heapen tex.
 //          Reference Types så som class, interface, object osv. lagras alltid på Heapen
 
-//3. Q:     Följande metoder (se bild nedan) genererar olika svar. Den första returnerar 3, den 
+//3. Q:     Följande metoder(se bild nedan) genererar olika svar. Den första returnerar 3, den 
 //          andra returnerar 4, varför? 
 //   A:     I första exemplet ReturnValue(): Vi använder oss av värdetypen int här, då uppdaterar
 //          vi ej x där vi uppdaterar y till 4 då vi endast kopierar över värdet av x till y (y=x)
 //          I det andra exemplet ReturnValue2(): Här använder vi en referenstyp MyInt, det betyder
 //          att när vi har y=x så pekar både y och x på samma objekt i minnet, uppdaterar vi
 //          y.MyValue = 4 så ändrar vi även på x.MyValue då det pekar på samma objekt.
-#endregion
 
-using System.ComponentModel.DataAnnotations.Schema;
+#endregion
 using System.Text;
 
 namespace SkalProj_Datastrukturer_Minne
@@ -134,20 +133,20 @@ namespace SkalProj_Datastrukturer_Minne
             }
 
         }
-
-        #region
         //      ---- QnA ----
-        //2.Q.  När ökar listans kapacitet? (Alltså den underliggande arrayens storlek) 
-        //  A.  Listans kapacitet ökar för varje gång den nuvarande kapaciteten överskrids
-        //       
-        //3.Q.  Med hur mycket ökar kapaciteten? 
-        //  A.  Exponentiellt med faktor 2 (2^n) och börjar med 4 i kapacitet, alltså blir kapaciteten 4, 8, 16, 32 osv.
-        //4.Q.  Varför ökar inte listans kapacitet i samma takt som element läggs till? 
-        //  A.  Då omallokering kostar prestanda så allokeras de vanligtvist exponentiellt varje gång kapaciteten är nådd
-        //5.Q.  Minskar kapaciteten när element tas bort ur listan? 
-        //  A.  Nej, de minskar ej då de redan är allokerade
-        //6.Q.  När är det då fördelaktigt att använda en egendefinierad array istället för en lista?
-        //  A.  Arrays är fördelaktiga då man från början vet antal element man behöver jobba med
+        #region
+
+        //2.Q.När ökar listans kapacitet? (Alltså den underliggande arrayens storlek) 
+        //  A.Listans kapacitet ökar för varje gång den nuvarande kapaciteten överskrids
+
+        //3.Q.Med hur mycket ökar kapaciteten?
+        //  A.Exponentiellt med faktor 2 (2^n) och börjar med 4 i kapacitet, alltså blir kapaciteten 4, 8, 16, 32 osv.
+        //4.Q.Varför ökar inte listans kapacitet i samma takt som element läggs till? 
+        //  A.Då omallokering kostar prestanda så allokeras de vanligtvist exponentiellt varje gång kapaciteten är nådd
+        //5.Q.Minskar kapaciteten när element tas bort ur listan? 
+        //  A.Nej, de minskar ej då de redan är allokerade
+        //6.Q.När är det då fördelaktigt att använda en egendefinierad array istället för en lista?
+        //  A.Arrays är fördelaktiga då man från början vet antal element man behöver jobba med
         //      Då kan man "Förallokera" antalet platser i arrayen.
         #endregion
 
@@ -198,26 +197,28 @@ namespace SkalProj_Datastrukturer_Minne
                 Console.WriteLine($"Queue: " + string.Join(", ", queue));
             }
         }
-//1. Simulera följande kö på papper: 
-//a.    ICA öppnar och kön till kassan är tom
-//b.    Kalle ställer sig i kön
-//c.    Greta ställer sig i kön
-//d.    Kalle blir expedierad och lämnar kön
-//e.    Stina ställer sig i kön
-//f.    Greta blir expedierad och lämnar kön
-//g.    Olle ställer sig i kön
-//h.    ...
+
+        //1. Simulera följande kö på papper: 
+        #region
+        //a.    ICA öppnar och kön till kassan är tom
+        //b.    Kalle ställer sig i kön
+        //c.    Greta ställer sig i kön
+        //d.    Kalle blir expedierad och lämnar kön
+        //e.    Stina ställer sig i kön
+        //f.    Greta blir expedierad och lämnar kön
+        //g.    Olle ställer sig i kön
+        //h.    ...
 
 
-//a.
-//b.    +Kalle  -> [Kalle]
-//c.    +Greta  -> [Kalle, Greta]
-//d.    -	    -> [Greta]
-//e.    +Stina  -> [Greta, Stina]
-//f.    -	    -> [Stina]
-//g.    +Olle   -> [Stina, Olle]
-//h.    ...
-
+        //a.
+        //b.    +Kalle  -> [Kalle]
+        //c.    +Greta  -> [Kalle, Greta]
+        //d.    -	    -> [Greta]
+        //e.    +Stina  -> [Greta, Stina]
+        //f.    -	    -> [Stina]
+        //g.    +Olle   -> [Stina, Olle]
+        //h.    ...
+        #endregion
 
         /// <summary>
         /// Examines the datastructure Stack
@@ -247,13 +248,13 @@ namespace SkalProj_Datastrukturer_Minne
             string input = Console.ReadLine() ?? string.Empty;
             StringBuilder builder = new StringBuilder();
             string reversedString;
-            
-            foreach (char c in input) 
+
+            foreach (char c in input)
             {
                 stack.Push(c);
             }
 
-            while(0<stack.Count)
+            while (0 < stack.Count)
             {
                 //Building and saving the stack back to a string, but reversed using pop.
                 builder.Append(stack.Pop());
@@ -263,22 +264,23 @@ namespace SkalProj_Datastrukturer_Minne
             Console.WriteLine($"\nThe reversed string: {reversedString}");
 
         }
-//1.        Simulera ännu en gång ICA-kön på papper.Denna gång med en stack.Varför är det
-//          inte så smart att använda en stack i det här fallet? 
-//1.Svar:   Det är inte så rättvist att de som ställer sig i kön sist, får hjälp först.
-//a.ICA öppnar och kön till kassan är tom
+        // ---- QnA ----
+        #region
+        //1.        Simulera ännu en gång ICA-kön på papper.Denna gång med en stack.Varför är det
+        //          inte så smart att använda en stack i det här fallet? 
+        //1.Svar:   Det är inte så rättvist att de som ställer sig i kön sist, får hjälp först.
 
-//a.
-//b. +Kalle -> [Kalle]
-//c. +Greta -> [Kalle, Greta]
-//d. -	  -> [Kalle]
-//e. +Stina -> [Kalle, Stina]
-//f. -	  -> [Kalle]
-//g. +Olle  -> [Kalle, Olle]
-//h. ...
+        //a.ICA öppnar och kön till kassan är tom
 
-
-
+        //a.
+        //b. +Kalle -> [Kalle]
+        //c. +Greta -> [Kalle, Greta]
+        //d. -	  -> [Kalle]
+        //e. +Stina -> [Kalle, Stina]
+        //f. -	  -> [Kalle]
+        //g. +Olle  -> [Kalle, Olle]
+        //h. ...
+        #endregion
         static void CheckParanthesis()
         {
             /*
@@ -286,9 +288,64 @@ namespace SkalProj_Datastrukturer_Minne
              * Example of correct: (()), {}, [({})],  List<int> list = new List<int>() { 1, 2, 3, 4 };
              * Example of incorrect: (()]), [), {[()}],  List<int> list = new List<int>() { 1, 2, 3, 4 );
              */
+            Console.WriteLine("Input 0 to exit to main menu");
+            while (true)
+            {
+
+                Console.WriteLine("Please input a string with paranthesis to check");
+                string input = Console.ReadLine() ?? string.Empty;
+                if (input == "0") break;
+                Stack<char> stack = new Stack<char>();
+                //Matching the correct closing with opening paranthesis
+                Dictionary<char, char> matches = new Dictionary<char, char>
+                {
+                    {')', '('},
+                    {']', '['},
+                    {'}', '{'}
+                };
+                int i = 0;
+                bool notWell = false;
+                foreach (char c in input)
+                {
+                    
+                    //check for opening paranthesis and if we find one in input
+                    //we push it on the stack
+                    if (c == '(' || c == '{' || c == '[')
+                    {
+                        stack.Push(c);
+                    }
+                    //check if we find a closing parathesis &
+                    //check if stack is empty (If stack is emppty there are no opening paranthesis to match)
+                    //or if the last opened paranthesis doesn't match
+                    //NOTE: Order is important here, since we want to check if stack is 0 before calling stack.Pop()!
+                    else if (matches.ContainsKey(c) && (stack.Count == 0 || stack.Pop() != matches[c]))
+                    {
+                        Console.WriteLine($"Paranthesis {c} at index {i} doesn't match");
+                        //If we find a closing paranthesis but stack is already 0
+                        //We want to break out and set notWell = true so the next 
+                        //If-statement doesn't catch a "false-positive"
+                        notWell = true;
+                        break;
+                    }
+                    i++;
+
+                }
+                //If the stack is 0 (All parantheses matched)
+                if (stack.Count == 0 && notWell == false)
+                {
+                    Console.WriteLine("The string is wellformed!");
+                }
+                else
+                {
+                    Console.WriteLine("The string is not wellformed!");
+                }
+            }
 
         }
-
+        //1.    Vilken datastruktur använder du.
+        //Svar. Vi använder oss av Stack då vi kan push och pop
+        //      parantesöppningar och stängningar för att kolla så det är korrekt.
+        //      Då vi alltid vill kolla parantesen vi öppnade sist stack.Pop() och matcha mot stängd.
     }
 }
 
