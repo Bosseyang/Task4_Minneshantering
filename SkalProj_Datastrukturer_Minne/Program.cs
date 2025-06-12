@@ -3,11 +3,11 @@
 //          grundläggande funktion 
 //   A:     Stacken är självunderhållen och lagrar information som staplade lådor,
 //          vi måste "lyfta" de övre lådorna för att komma åt de undre.
-//          Heapen, där ligger all information utspritt och vi har till gång till allt
-//          bara vi vet vad vi vill ha, där hanteras information vi ej behöver av Garbage Collectorn
+//          Heapen, där ligger all information utspritt och vi har tillgång till allt
+//          bara vi vet vad vi vill ha, där hanteras information vi ej använder av Garbage Collectorn
 
 //2. Q:     Vad är Value Types respektive Reference Types och vad skiljer dem åt? 
-//   A:     Value Types är inbyggda variabel typer i System.ValueType så som tex. bool, int,
+//   A:     Value Types är inbyggda datatyper i System.ValueType så som tex. bool, int,
 //          float etc. Dessa lagras där de deklareras, deklareras de i en class lagras de på heapen tex.
 //          Reference Types så som class, interface, object osv. lagras alltid på Heapen
 
